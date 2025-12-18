@@ -1,0 +1,7 @@
+
+# List files and directories, newest access time first, directories with /, comma-separated
+# ls -At --group-directories-first | awk '{if ( -d $0 ) printf ",%s",$0; else printf "%s",$0} END{print ""}' | paste -sd',' -
+
+
+# List files and directories, newest first, directories with /, comma-separated
+ls -At | awk 'BEGIN{first=1} {if (first){first=0}else{printf ","} if (-d $0) printf "%s",$0; else printf "%s",$0} END{print ""}'
